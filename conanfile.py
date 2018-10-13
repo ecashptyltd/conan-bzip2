@@ -3,6 +3,7 @@ import shutil
 
 from conans import CMake, tools
 from conans import ConanFile
+from conans.errors import ConanInvalidConfiguration
 
 
 class Bzip2Conan(ConanFile):
@@ -25,8 +26,10 @@ class Bzip2Conan(ConanFile):
     def zip_folder_name(self):
         return "bzip2-%s" % self.version
 
-    def config(self):
+    def configure(self):
         del self.settings.compiler.libcxx
+        if self.settings.os == "Windows" and self.options.shared:
+            raise ConanInvalidConfiguration("Windows/shared not supported")
 
     def source(self):
         zip_name = "bzip2-%s.tar.gz" % self.version
