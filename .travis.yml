@@ -3,7 +3,6 @@ env:
    global:
      - CONAN_REFERENCE: "bzip2/1.0.6"
      - CONAN_USERNAME: "conan"
-     - CONAN_CHANNEL: "release"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/ecashptyltd/public-conan"
      - CONAN_STABLE_BRANCH_PATTERN: "build-for-bintray/release/*"
      - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
